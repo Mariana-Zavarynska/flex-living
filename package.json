@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "node": ">=20.11",
+  "author": "Mariana Zavarynska",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
