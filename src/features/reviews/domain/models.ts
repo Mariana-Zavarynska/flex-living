@@ -19,7 +19,7 @@ export interface HostawayReview {
     listingId?: number | string;
 }
 
-export type ReviewSource = "hostaway" | "mock";
+export type ReviewSource = "hostaway" | "mock" | "google";
 
 export interface ListingRef {
     name: string;

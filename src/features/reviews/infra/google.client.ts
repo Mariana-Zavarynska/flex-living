@@ -49,6 +49,16 @@ export async function fetchGoogleReviews(
     }
 }
 
+function hashStringToNumber(str: string): number {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+        const char = str.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash; // Convert to 32-bit integer
+    }
+    return Math.abs(hash);
+}
+
 export function normalizeGoogleReview(
     review: GoogleReview,
     placeId: string,
@@ -56,9 +66,10 @@ export function normalizeGoogleReview(
 ) {
     const rating10 = review.rating * 2;
     const submittedAt = review.publishTime || new Date().toISOString();
+    const idString = `google-${placeId}-${review.publishTime}`;
 
     return {
-        id: `google-${placeId}-${review.publishTime}`,
+        id: hashStringToNumber(idString),
         source: "google" as const,
         listing: {
             name: propertyName,
