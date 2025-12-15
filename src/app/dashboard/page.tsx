@@ -1,0 +1,7 @@
+import { DashboardClient } from "@/features/reviews/ui/DashboardClient";
+
+export const dynamic = "force-dynamic";
+
+export default function DashboardPage() {
+    return <DashboardClient />;
+}
